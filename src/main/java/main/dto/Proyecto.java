@@ -2,11 +2,11 @@ package main.dto;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -25,8 +25,7 @@ public class Proyecto {
 	@Column
 	private int horas;
 	
-	@OneToMany
-	@JoinColumn(name="id")
+	@OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL)
 	private List<AsignadoA> asignadoA;
 	
 	public Proyecto() {
@@ -65,7 +64,7 @@ public class Proyecto {
 	}
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "AsignadoA")
+	@OneToMany(fetch = FetchType.LAZY)
 	public List<AsignadoA> getAsignadoA() {
 		return asignadoA;
 	}

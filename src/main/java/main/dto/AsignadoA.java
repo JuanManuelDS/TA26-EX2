@@ -18,11 +18,11 @@ public class AsignadoA {
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn(name="cientifico")
 	private Cientifico cientifico;
 	
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn(name="proyecto")
 	private Proyecto proyecto;
 	
 	public AsignadoA() {
